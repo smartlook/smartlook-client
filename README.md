@@ -19,11 +19,15 @@ Imports and initializes Smartlook recorder into a page.
     var smartlookClient = require('smartlook-client')
     ```
 3. API
-		```
-		init(string key)
-		tag(string tagName, string tagValue)
-		disable()
-		```
+     ```
+     init(string key)
+     ```
+     ```
+     tag(string tagName, string tagValue)
+     ```
+     ```
+     disable()
+     ```
 4. Example usage
     ```
     import React, { Component } from 'react'
