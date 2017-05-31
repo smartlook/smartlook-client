@@ -1,6 +1,6 @@
 {
   "name": "smartlook-client",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Official Smartlook client for easy frontend integration.",
   "main": "index.js",
   "scripts": {
