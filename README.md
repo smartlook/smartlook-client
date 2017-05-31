@@ -55,3 +55,5 @@ Imports and initializes Smartlook recorder into a page.
 
     export default App
     ```
+
+For more info visit https://www.smartlook.com/docs/api.html
