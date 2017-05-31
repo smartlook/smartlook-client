@@ -43,7 +43,6 @@ Imports and initializes Smartlook recorder into a page.
     	render() {
     		return (
     			<div>
-    				<button onClick={this.handleInitialize.bind(this)}>Initialize</button>
     				<button onClick={this.handleTag.bind(this)}>Tag</button>
     				<button onClick={this.handleDisable.bind(this)}>Disable</button>
     			</div>
