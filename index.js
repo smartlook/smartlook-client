@@ -20,9 +20,15 @@ module.exports = (function(w) {
 			head.appendChild(script)
 		},
 		tag: function(name, value) {
+			if (!w.smartlook) {
+				throw 'Smartlook client is not initialized.'
+			}
 			w.smartlook('tag', name, value)
 		},
 		disable: function() {
+			if (!w.smartlook) {
+				throw 'Smartlook client is not initialized.'
+			}
 			w.smartlook('disable', true)
 		}
 	}
