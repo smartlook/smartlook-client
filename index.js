@@ -32,4 +32,10 @@ module.exports = {
 		}
 		window.smartlook('track', eventName, props)
 	},
+	disable: function() {
+		if (!window.smartlook) {
+			throw 'Smartlook client is not initialized.'
+		}
+		window.smartlook('disable')
+	}
 }
