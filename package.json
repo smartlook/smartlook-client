@@ -1,26 +1,26 @@
 {
-  "name": "smartlook-client",
-  "version": "2.2.0",
-  "description": "Official Smartlook client for easy frontend integration.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smartlook/smartlook-client.git"
-  },
-  "keywords": [
-    "smartlook",
-    "smartlook-client"
-  ],
-  "author": {
-    "name": "David Kadlec",
-    "email": "david@smartsupp.com"
-  },
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/smartlook/smartlook-client/issues"
-  },
-  "homepage": "https://github.com/smartlook/smartlook-client#readme"
+	"name": "smartlook-client",
+	"version": "3.0.1",
+	"description": "Official Smartlook client for easy frontend integration.",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/smartlook/smartlook-client.git"
+	},
+	"keywords": [
+		"smartlook",
+		"smartlook-client"
+	],
+	"author": {
+		"name": "David Kadlec",
+		"email": "david@smartsupp.com"
+	},
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/smartlook/smartlook-client/issues"
+	},
+	"homepage": "https://github.com/smartlook/smartlook-client#readme"
 }

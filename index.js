@@ -1,9 +1,11 @@
-module.exports = ({
+module.exports = {
 	init: function(key) {
 		if (window.smartlook) {
 			throw 'Smartlook client is already initialized.'
 		}
-		window.smartlook = function(){ window.smartlook.api.push(arguments) }
+		window.smartlook = function() {
+			window.smartlook.api.push(arguments)
+		}
 		window.smartlook.api = []
 		window.smartlook('init', key)
 
@@ -15,16 +17,25 @@ module.exports = ({
 		script.src = 'https://rec.smartlook.com/recorder.js'
 		head.appendChild(script)
 	},
-	tag: function(name, value) {
+	identify: function(userId, props) {
 		if (!window.smartlook) {
 			throw 'Smartlook client is not initialized.'
 		}
-		window.smartlook('tag', name, value)
+		if (!userId) {
+			throw 'Smartlook - User ID must be provided'
+		}
+		window.smartlook('identify', userId, props)
+	},
+	track: function(eventName, props) {
+		if (!window.smartlook) {
+			throw 'Smartlook client is not initialized.'
+		}
+		window.smartlook('track', eventName, props)
 	},
 	disable: function() {
 		if (!window.smartlook) {
 			throw 'Smartlook client is not initialized.'
 		}
-		window.smartlook('disable', true)
+		window.smartlook('disable')
 	}
-})
+}
