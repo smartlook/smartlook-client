@@ -1,6 +1,6 @@
 {
 	"name": "smartlook-client",
-	"version": "2.2.0",
+	"version": "3.0.0",
 	"description": "Official Smartlook client for easy frontend integration.",
 	"main": "index.js",
 	"scripts": {
@@ -10,7 +10,10 @@
 		"type": "git",
 		"url": "git+https://github.com/smartlook/smartlook-client.git"
 	},
-	"keywords": ["smartlook", "smartlook-client"],
+	"keywords": [
+		"smartlook",
+		"smartlook-client"
+	],
 	"author": {
 		"name": "David Kadlec",
 		"email": "david@smartsupp.com"
