@@ -37,5 +37,29 @@ module.exports = {
 			throw 'Smartlook client is not initialized.'
 		}
 		window.smartlook('disable')
+	},
+	consentForms: function(consent) {
+		if (!window.smartlook) {
+			throw 'Smartlook client is not initialized.'
+		}
+		window.smartlook('consentForms', consent)
+	},
+	consentIP: function(consent) {
+		if (!window.smartlook) {
+			throw 'Smartlook client is not initialized.'
+		}
+		window.smartlook('consentIP', consent)
+	},
+	consentAPI: function(consent) {
+		if (!window.smartlook) {
+			throw 'Smartlook client is not initialized.'
+		}
+		window.smartlook('consentAPI', consent)
+	},
+	getData: function(callback) {
+		if (!window.smartlook) {
+			throw 'Smartlook client is not initialized.'
+		}
+		window.smartlook(callback)
 	}
 }
