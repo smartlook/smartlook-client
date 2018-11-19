@@ -9,8 +9,8 @@ module.exports = {
 		window.smartlook.api = []
 		window.smartlook('init', key)
 
-		const head = window.document.getElementsByTagName('head')[0]
-		const script = window.document.createElement('script')
+		var head = window.document.getElementsByTagName('head')[0]
+		var script = window.document.createElement('script')
 		script.async = true
 		script.type = 'text/javascript'
 		script.charset = 'utf-8'
