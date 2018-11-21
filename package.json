@@ -2,10 +2,11 @@
   "name": "smartlook-client",
   "version": "3.1.1",
   "description": "Official Smartlook client for easy frontend integration.",
-  "main": "index.js",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+		"build": "tsc"
+	},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/smartlook/smartlook-client.git"
@@ -22,5 +23,8 @@
   "bugs": {
     "url": "https://github.com/smartlook/smartlook-client/issues"
   },
-  "homepage": "https://github.com/smartlook/smartlook-client#readme"
+  "homepage": "https://github.com/smartlook/smartlook-client#readme",
+  "dependencies": {
+    "typescript": "^3.1.6"
+  }
 }

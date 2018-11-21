@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"sourceMap": true,
+		"target": "es5",
+		"allowJs": false,
+		"declaration": true,
+		"removeComments": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"strict": true,
+		"outDir": "dist",
+	},
+	"files": ["index.ts"]
+}
