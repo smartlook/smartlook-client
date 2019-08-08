@@ -29,6 +29,9 @@ Imports and initializes Smartlook recorder into a page.
     identify(integer userId, object<key:value> props)
     ```
     ```
+    anonymize()
+    ```
+    ```
     disable()
     ```
     ```
@@ -42,6 +45,12 @@ Imports and initializes Smartlook recorder into a page.
     ```
     ```
     getData(function callback)
+    ```
+    ```
+    restart()
+    ```
+    ```
+    error(string | Error error)
     ```
 4.  Example usage in React
 
