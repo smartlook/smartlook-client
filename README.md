@@ -26,7 +26,7 @@ Imports and initializes Smartlook recorder into a page.
     track(string eventName, object<key:value> props)
     ```
     ```
-    identify(integer userId, object<key:value> props)
+    identify(integer | string userId, object<key:value> props)
     ```
     ```
     anonymize()

@@ -1,6 +1,6 @@
 declare const _default: {
     init: (key: string) => void;
-    identify: (userId: string, props: {
+    identify: (userId: string | number, props: {
         [key: string]: string | number | boolean;
     }) => void;
     anonymize: () => void;
