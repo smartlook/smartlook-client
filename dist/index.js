@@ -73,12 +73,14 @@ exports.default = {
         }
         w.smartlook("consentAPI", consent);
     },
-    getData: function (callback) {
+    getData: function (variable, callback) {
         var w = window;
         if (!w.smartlook) {
             throw SL_NOT_INITIALIZED;
         }
-        w.smartlook(callback);
+        w.smartlook(function () {
+            callback(w.smartlook[variable]);
+        });
     },
     restart: function () {
         var w = window;

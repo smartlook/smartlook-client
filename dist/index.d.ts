@@ -11,7 +11,7 @@ declare const _default: {
     consentForms: (consent: string | false) => void;
     consentIP: (consent: string | false) => void;
     consentAPI: (consent: string | false) => void;
-    getData: (callback: () => void) => void;
+    getData: (variable: string, callback: (data: string | undefined) => void) => void;
     restart: () => void;
     error: (error: string | Error) => void;
 };
