@@ -94,6 +94,20 @@ export default {
     }
     w.smartlook("restart");
   },
+  pause: function(): void {
+    const w = window as SmartlookWindow;
+    if (!w.smartlook) {
+      throw SL_NOT_INITIALIZED;
+    }
+    w.smartlook("pause");
+  },
+  resume: function(): void {
+    const w = window as SmartlookWindow;
+    if (!w.smartlook) {
+      throw SL_NOT_INITIALIZED;
+    }
+    w.smartlook("resume");
+  },
   error: function(error: string | Error): void {
     const w = window as SmartlookWindow;
     if (!w.smartlook) {

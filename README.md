@@ -50,6 +50,12 @@ Imports and initializes Smartlook recorder into a page.
     restart()
     ```
     ```
+    pause()
+    ```
+    ```
+    resume()
+    ```
+    ```
     error(string | Error error)
     ```
 4.  Example usage in React
@@ -63,27 +69,27 @@ Imports and initializes Smartlook recorder into a page.
     class App extends Component {
       handleIdentify = () => {
         smartlookClient.identify(12345, {
-         name: 'John Doe',
-         email: 'email@domain.com',
-         // other custom properties
+          name: 'John Doe',
+          email: 'email@domain.com',
+          // other custom properties
        })
       }
       handleTrack = () => {
-       smartlookClient.track('transaction', {
-         "value": 150,
-         "currency": "usd",
-         "product": "Product Description",
-         // other custom properties
+        smartlookClient.track('transaction', {
+          "value": 150,
+          "currency": "usd",
+          "product": "Product Description",
+          // other custom properties
        });
       }
-     handleDisable = () => {
-       smartlookClient.disable()
-     }
+      handleDisable = () => {
+        smartlookClient.disable()
+      }
       render() {
         return (
           <div>
             <button onClick={this.handleIdentify}>Identify visitor</button>
-           <button onClick={this.handleTrack}>Track event</button>
+            <button onClick={this.handleTrack}>Track event</button>
             <button onClick={this.handleDisable}>Disable recording</button>
           </div>
         )

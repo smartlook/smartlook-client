@@ -87,6 +87,20 @@ exports.default = {
         }
         w.smartlook("restart");
     },
+    pause: function () {
+        var w = window;
+        if (!w.smartlook) {
+            throw SL_NOT_INITIALIZED;
+        }
+        w.smartlook("pause");
+    },
+    resume: function () {
+        var w = window;
+        if (!w.smartlook) {
+            throw SL_NOT_INITIALIZED;
+        }
+        w.smartlook("resume");
+    },
     error: function (error) {
         var w = window;
         if (!w.smartlook) {

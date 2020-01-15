@@ -13,6 +13,8 @@ declare const _default: {
     consentAPI: (consent: string | false) => void;
     getData: (callback: () => void) => void;
     restart: () => void;
+    pause: () => void;
+    resume: () => void;
     error: (error: string | Error) => void;
 };
 export default _default;
