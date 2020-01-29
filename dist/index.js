@@ -107,6 +107,13 @@ exports.default = {
             throw SL_NOT_INITIALIZED;
         }
         w.smartlook("error", error);
+    },
+    navigation: function (locationOrPath) {
+        var w = window;
+        if (!w.smartlook) {
+            throw SL_NOT_INITIALIZED;
+        }
+        w.smartlook("navigation", locationOrPath);
     }
 };
 //# sourceMappingURL=index.js.map

@@ -58,6 +58,9 @@ Imports and initializes Smartlook recorder into a page.
     ```
     error(string | Error error)
     ```
+    ```
+    navigation(string locationOrPath)
+    ```
 4.  Example usage in React
 
     Usage in other libraries is similar.

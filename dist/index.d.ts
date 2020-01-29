@@ -16,5 +16,6 @@ declare const _default: {
     pause: () => void;
     resume: () => void;
     error: (error: string | Error) => void;
+    navigation: (locationOrPath: string) => void;
 };
 export default _default;

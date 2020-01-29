@@ -114,5 +114,12 @@ export default {
       throw SL_NOT_INITIALIZED;
     }
     w.smartlook("error", error);
+  },
+  navigation: function(locationOrPath: string): void {
+    const w = window as SmartlookWindow;
+    if (!w.smartlook) {
+      throw SL_NOT_INITIALIZED;
+    }
+    w.smartlook("navigation", locationOrPath);
   }
 };
