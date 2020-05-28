@@ -65,7 +65,7 @@ Imports and initializes Smartlook recorder into a page.
 
     Usage in other libraries is similar.
 
-    ```
+    ```js
     import React, { Component } from 'react'
     import smartlookClient from 'smartlook-client'
 
