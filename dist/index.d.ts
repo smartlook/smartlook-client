@@ -17,5 +17,8 @@ declare const _default: {
     resume: () => void;
     error: (error: string | Error) => void;
     navigation: (locationOrPath: string) => void;
+    properties: (properties: {
+        [key: string]: string | number | boolean;
+    }) => void;
 };
 export default _default;
