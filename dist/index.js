@@ -122,5 +122,9 @@ exports.default = {
         }
         w.smartlook('properties', properties);
     },
+    initialized: function () {
+        var w = window;
+        return !!w.smartlook;
+    },
 };
 //# sourceMappingURL=index.js.map
