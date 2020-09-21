@@ -64,6 +64,9 @@ Imports and initializes Smartlook recorder into a page.
     ```
     properties(object<key:value> properties)
     ```
+    ```
+    initialized()
+    ```
 4.  Example usage in React
 
     Usage in other libraries is similar.
