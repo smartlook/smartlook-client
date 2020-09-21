@@ -20,5 +20,6 @@ declare const _default: {
     properties: (properties: {
         [key: string]: string | number | boolean;
     }) => void;
+    initialized: () => boolean;
 };
 export default _default;

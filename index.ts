@@ -123,4 +123,8 @@ export default {
 		}
 		w.smartlook('properties', properties)
 	},
+	initialized: function (): boolean {
+		const w = window as SmartlookWindow
+		return !!w.smartlook;
+	},
 }
