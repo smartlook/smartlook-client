@@ -2,10 +2,11 @@ type SmartlookWindow = Window & { smartlook?: any }
 const SL_NOT_INITIALIZED = 'Smartlook client is not initialized.'
 
 export default {
-	init: function (key: string): void {
+	init: function (key: string): boolean {
 		const w = window as SmartlookWindow
 		if (w.smartlook) {
-			throw 'Smartlook client is already initialized.'
+			console.warn('Smartlook client is already initialized.')
+			return false
 		}
 		w.smartlook = function () {
 			w.smartlook.api.push(arguments)
@@ -17,114 +18,144 @@ export default {
 		const script = window.document.createElement('script')
 		script.async = true
 		script.type = 'text/javascript'
-		script.charset = 'utf-8'
 		script.crossOrigin = 'anonymous'
 		script.src = 'https://rec.smartlook.com/recorder.js'
 		head.appendChild(script)
+
+		return true
 	},
-	identify: function (userId: string | number, props: { [key: string]: string | boolean | number }): void {
+	identify: function (userId: string | number, props: { [key: string]: string | boolean | number }): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		if (!userId) {
-			throw 'Smartlook - User ID must be provided'
+			console.warn('Smartlook - User ID must be provided')
+			return false
 		}
 		w.smartlook('identify', userId, props)
+		return true
 	},
-	anonymize: function (): void {
+	anonymize: function (): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('anonymize')
+		return true
 	},
-	track: function (eventName: string, props: { [key: string]: string | boolean | number }): void {
+	track: function (eventName: string, props: { [key: string]: string | boolean | number }): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('track', eventName, props)
+		return true
 	},
-	disable: function (): void {
+	disable: function (): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('disable')
+		return true
 	},
-	consentForms: function (consent: string | false): void {
+	consentForms: function (consent: string | false): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('consentForms', consent)
+		return true
 	},
-	consentIP: function (consent: string | false): void {
+	consentIP: function (consent: string | false): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('consentIP', consent)
+		return true
 	},
-	consentAPI: function (consent: string | false): void {
+	consentAPI: function (consent: string | false): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('consentAPI', consent)
+		return true
 	},
-	getData: function (callback: () => void): void {
+	getData: function (callback: () => void): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook(callback)
+		return true
 	},
-	restart: function (): void {
+	restart: function (): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('restart')
+		return true
 	},
-	pause: function (): void {
+	pause: function (): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('pause')
+		return true
 	},
-	resume: function (): void {
+	resume: function (): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('resume')
+		return true
 	},
-	error: function (error: string | Error): void {
+	error: function (error: string | Error): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('error', error)
+		return true
 	},
-	navigation: function (locationOrPath: string): void {
+	navigation: function (locationOrPath: string): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('navigation', locationOrPath)
+		return true
 	},
-	properties: function (properties: { [key: string]: string | boolean | number }): void {
+	properties: function (properties: { [key: string]: string | boolean | number }): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
-			throw SL_NOT_INITIALIZED
+			console.warn(SL_NOT_INITIALIZED)
+			return false
 		}
 		w.smartlook('properties', properties)
+		return true
 	},
 	initialized: function (): boolean {
 		const w = window as SmartlookWindow
-		return !!w.smartlook;
+		return !!w.smartlook
 	},
 }

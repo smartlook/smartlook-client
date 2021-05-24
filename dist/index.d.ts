@@ -1,25 +1,25 @@
 declare const _default: {
-    init: (key: string) => void;
+    init: (key: string) => boolean;
     identify: (userId: string | number, props: {
         [key: string]: string | number | boolean;
-    }) => void;
-    anonymize: () => void;
+    }) => boolean;
+    anonymize: () => boolean;
     track: (eventName: string, props: {
         [key: string]: string | number | boolean;
-    }) => void;
-    disable: () => void;
-    consentForms: (consent: string | false) => void;
-    consentIP: (consent: string | false) => void;
-    consentAPI: (consent: string | false) => void;
-    getData: (callback: () => void) => void;
-    restart: () => void;
-    pause: () => void;
-    resume: () => void;
-    error: (error: string | Error) => void;
-    navigation: (locationOrPath: string) => void;
+    }) => boolean;
+    disable: () => boolean;
+    consentForms: (consent: string | false) => boolean;
+    consentIP: (consent: string | false) => boolean;
+    consentAPI: (consent: string | false) => boolean;
+    getData: (callback: () => void) => boolean;
+    restart: () => boolean;
+    pause: () => boolean;
+    resume: () => boolean;
+    error: (error: string | Error) => boolean;
+    navigation: (locationOrPath: string) => boolean;
     properties: (properties: {
         [key: string]: string | number | boolean;
-    }) => void;
+    }) => boolean;
     initialized: () => boolean;
 };
 export default _default;
