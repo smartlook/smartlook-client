@@ -1,5 +1,8 @@
 declare const _default: {
-    init: (key: string) => boolean;
+    init: (key: string, params?: {
+        region: 'eu' | 'us';
+        version: 'legacy' | 'nextgen';
+    } | undefined) => boolean;
     identify: (userId: string | number, props: {
         [key: string]: string | number | boolean;
     }) => boolean;

@@ -2,7 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var SL_NOT_INITIALIZED = 'Smartlook client is not initialized.';
 exports.default = {
-    init: function (key) {
+    init: function (key, params) {
         var w = window;
         if (w.smartlook) {
             console.warn('Smartlook client is already initialized.');
@@ -11,14 +11,16 @@ exports.default = {
         w.smartlook = function () {
             w.smartlook.api.push(arguments);
         };
+        var _a = params !== null && params !== void 0 ? params : {}, _b = _a.region, region = _b === void 0 ? 'eu' : _b, _c = _a.version, version = _c === void 0 ? 'legacy' : _c;
         w.smartlook.api = [];
-        w.smartlook('init', key);
+        w.smartlook('init', key, { region: region });
         var head = window.document.getElementsByTagName('head')[0];
         var script = window.document.createElement('script');
         script.async = true;
         script.type = 'text/javascript';
         script.crossOrigin = 'anonymous';
-        script.src = 'https://rec.smartlook.com/recorder.js';
+        script.src =
+            version === 'legacy' ? 'https://rec.smartlook.com/recorder.js' : 'https://web-sdk.smartlook.com/recorder.js';
         head.appendChild(script);
         return true;
     },
