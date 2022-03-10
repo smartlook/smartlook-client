@@ -19,54 +19,96 @@ Imports and initializes Smartlook recorder into a page.
     var smartlookClient = require('smartlook-client')
     ```
 3.  API
+
     ```
     init(string key)
+    init(string key, params?: { region?: 'eu' | 'us', version?: 'legacy' })
     ```
+
     ```
     track(string eventName, object<key:value> props)
     ```
+
     ```
     identify(integer | string userId, object<key:value> props)
     ```
+
     ```
     anonymize()
     ```
+
     ```
     disable()
     ```
+
     ```
     consentForms(string | false consent)
     ```
+
     ```
     consentIP(string | false consent)
     ```
+
     ```
     consentAPI(string | false consent)
     ```
+
     ```
     getData(function callback)
     ```
+
     ```
     restart()
     ```
+
     ```
     pause()
     ```
+
     ```
     resume()
     ```
+
     ```
     error(string | Error error)
     ```
+
     ```
     navigation(string locationOrPath)
     ```
+
     ```
     properties(object<key:value> properties)
     ```
+
     ```
     initialized()
     ```
+
+    ```
+    playUrl
+    ```
+
+    ```
+    sessionId
+    ```
+
+    ```
+    visitorId
+    ```
+
+    ```
+    recordId
+    ```
+
+    ```
+    key
+    ```
+
+    ```
+    version
+    ```
+
 4.  Example usage in React
 
     Usage in other libraries is similar.
@@ -91,15 +133,15 @@ Imports and initializes Smartlook recorder into a page.
     			// other custom properties
     		})
     	}
-    	handleDisable = () => {
-    		smartlookClient.disable()
+    	handlePause = () => {
+    		smartlookClient.pause()
     	}
     	render() {
     		return (
     			<div>
     				<button onClick={this.handleIdentify}>Identify visitor</button>
     				<button onClick={this.handleTrack}>Track event</button>
-    				<button onClick={this.handleDisable}>Disable recording</button>
+    				<button onClick={this.handlePause}>Pause recording</button>
     			</div>
     		)
     	}
