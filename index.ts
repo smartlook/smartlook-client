@@ -168,4 +168,30 @@ export default {
 		const w = window as SmartlookWindow
 		return !!w.smartlook
 	},
+  get playUrl(): string | undefined {
+    const w = window as SmartlookWindow
+		return w.smartlook.playUrl
+	},
+  get sessionId(): string | undefined {
+    const w = window as SmartlookWindow
+		return w.smartlook.sessionId
+	},
+  get visitorId(): string | undefined {
+    const w = window as SmartlookWindow
+		return w.smartlook.visitorId
+	},
+  get recordId(): string | undefined {
+    const w = window as SmartlookWindow
+		return w.smartlook.recordId
+	},
+  get key(): string | undefined {
+    const w = window as SmartlookWindow
+		return w.smartlook.key
+	},
+  get version(): string | undefined {
+    const w = window as SmartlookWindow
+		return w.smartlook.version
+	},
 }
+
+
