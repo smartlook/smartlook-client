@@ -6,9 +6,9 @@ export default {
 	 * Initializes the Smartlook web sdk library
 	 *
 	 * @param key Project key from project settings
-	 * @param params Not required parameters, default region is 'eu' and default version is 'legacy'
+	 * @param params Not required parameters, default region is 'eu' and default version is 'nextgen'
 	 */
-	init: function (key: string, params?: { region: 'eu' | 'us'; version: 'legacy' | 'nextgen' }): boolean {
+	init: function (key: string, params?: { region?: 'eu' | 'us'; version?: 'nextgen' | 'legacy' }): boolean {
 		const w = window as SmartlookWindow
 		if (w.smartlook) {
 			console.warn('Smartlook client is already initialized.')
@@ -18,7 +18,7 @@ export default {
 			w.smartlook.api.push(arguments)
 		}
 
-		const { region = 'eu', version = 'legacy' } = params ?? {}
+		const { region = 'eu', version = 'nextgen' } = params ?? {}
 
 		w.smartlook.api = []
 		w.smartlook('init', key, { region })
@@ -29,7 +29,7 @@ export default {
 		script.type = 'text/javascript'
 		script.crossOrigin = 'anonymous'
 		script.src =
-			version === 'legacy' ? 'https://rec.smartlook.com/recorder.js' : 'https://web-sdk.smartlook.com/recorder.js'
+			version === 'nextgen' ? 'https://web-sdk.smartlook.com/recorder.js' : 'https://rec.smartlook.com/recorder.js'
 		head.appendChild(script)
 
 		return true
