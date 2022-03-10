@@ -24,5 +24,11 @@ declare const _default: {
         [key: string]: string | number | boolean;
     }) => boolean;
     initialized: () => boolean;
+    readonly playUrl: string | undefined;
+    readonly sessionId: string | undefined;
+    readonly visitorId: string | undefined;
+    readonly recordId: string | undefined;
+    readonly key: string | undefined;
+    readonly version: string | undefined;
 };
 export default _default;

@@ -158,5 +158,29 @@ exports.default = {
         var w = window;
         return !!w.smartlook;
     },
+    get playUrl() {
+        var w = window;
+        return w.smartlook.playUrl;
+    },
+    get sessionId() {
+        var w = window;
+        return w.smartlook.sessionId;
+    },
+    get visitorId() {
+        var w = window;
+        return w.smartlook.visitorId;
+    },
+    get recordId() {
+        var w = window;
+        return w.smartlook.recordId;
+    },
+    get key() {
+        var w = window;
+        return w.smartlook.key;
+    },
+    get version() {
+        var w = window;
+        return w.smartlook.version;
+    },
 };
 //# sourceMappingURL=index.js.map
