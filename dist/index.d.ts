@@ -11,9 +11,13 @@ declare const _default: {
         [key: string]: string | number | boolean;
     }) => boolean;
     disable: () => boolean;
-    consentForms: (consent: string | false) => boolean;
-    consentIP: (consent: string | false) => boolean;
-    consentAPI: (consent: string | false) => boolean;
+    record: (params: {
+        forms?: boolean;
+        ips?: boolean;
+        numbers?: boolean;
+        emails?: boolean;
+        api?: boolean;
+    }) => boolean;
     getData: (callback: () => void) => boolean;
     restart: () => boolean;
     pause: () => boolean;

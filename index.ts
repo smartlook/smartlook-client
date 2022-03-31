@@ -74,31 +74,19 @@ export default {
 		w.smartlook('disable')
 		return true
 	},
-	consentForms: function (consent: string | false): boolean {
+	record: function (params: {
+		forms?: boolean
+		ips?: boolean
+		numbers?: boolean
+		emails?: boolean
+		api?: boolean
+	}): boolean {
 		const w = window as SmartlookWindow
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
 		}
-		w.smartlook('consentForms', consent)
-		return true
-	},
-	consentIP: function (consent: string | false): boolean {
-		const w = window as SmartlookWindow
-		if (!w.smartlook) {
-			console.warn(SL_NOT_INITIALIZED)
-			return false
-		}
-		w.smartlook('consentIP', consent)
-		return true
-	},
-	consentAPI: function (consent: string | false): boolean {
-		const w = window as SmartlookWindow
-		if (!w.smartlook) {
-			console.warn(SL_NOT_INITIALIZED)
-			return false
-		}
-		w.smartlook('consentAPI', consent)
+		w.smartlook('record', params)
 		return true
 	},
 	getData: function (callback: () => void): boolean {
@@ -168,30 +156,28 @@ export default {
 		const w = window as SmartlookWindow
 		return !!w.smartlook
 	},
-  get playUrl(): string | undefined {
-    const w = window as SmartlookWindow
+	get playUrl(): string | undefined {
+		const w = window as SmartlookWindow
 		return w.smartlook.playUrl
 	},
-  get sessionId(): string | undefined {
-    const w = window as SmartlookWindow
+	get sessionId(): string | undefined {
+		const w = window as SmartlookWindow
 		return w.smartlook.sessionId
 	},
-  get visitorId(): string | undefined {
-    const w = window as SmartlookWindow
+	get visitorId(): string | undefined {
+		const w = window as SmartlookWindow
 		return w.smartlook.visitorId
 	},
-  get recordId(): string | undefined {
-    const w = window as SmartlookWindow
+	get recordId(): string | undefined {
+		const w = window as SmartlookWindow
 		return w.smartlook.recordId
 	},
-  get key(): string | undefined {
-    const w = window as SmartlookWindow
+	get key(): string | undefined {
+		const w = window as SmartlookWindow
 		return w.smartlook.key
 	},
-  get version(): string | undefined {
-    const w = window as SmartlookWindow
+	get version(): string | undefined {
+		const w = window as SmartlookWindow
 		return w.smartlook.version
 	},
 }
-
-

@@ -64,31 +64,13 @@ exports.default = {
         w.smartlook('disable');
         return true;
     },
-    consentForms: function (consent) {
+    record: function (params) {
         var w = window;
         if (!w.smartlook) {
             console.warn(SL_NOT_INITIALIZED);
             return false;
         }
-        w.smartlook('consentForms', consent);
-        return true;
-    },
-    consentIP: function (consent) {
-        var w = window;
-        if (!w.smartlook) {
-            console.warn(SL_NOT_INITIALIZED);
-            return false;
-        }
-        w.smartlook('consentIP', consent);
-        return true;
-    },
-    consentAPI: function (consent) {
-        var w = window;
-        if (!w.smartlook) {
-            console.warn(SL_NOT_INITIALIZED);
-            return false;
-        }
-        w.smartlook('consentAPI', consent);
+        w.smartlook('record', params);
         return true;
     },
     getData: function (callback) {
