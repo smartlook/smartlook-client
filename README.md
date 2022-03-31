@@ -42,15 +42,7 @@ Imports and initializes Smartlook recorder into a page.
     ```
 
     ```
-    consentForms(string | false consent)
-    ```
-
-    ```
-    consentIP(string | false consent)
-    ```
-
-    ```
-    consentAPI(string | false consent)
+    record(params: { forms?: boolean, ips?: boolean, emails?: boolean, numbers?: boolean })
     ```
 
     ```
