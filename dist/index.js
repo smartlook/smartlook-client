@@ -11,11 +11,14 @@ exports.default = {
         w.smartlook = function () {
             w.smartlook.api.push(arguments);
         };
-        var _a = params !== null && params !== void 0 ? params : {}, _b = _a.region, region = _b === void 0 ? 'eu' : _b, _c = _a.version, version = _c === void 0 ? 'nextgen' : _c;
+        var _a = params !== null && params !== void 0 ? params : {}, _b = _a.region, region = _b === void 0 ? 'eu' : _b, _c = _a.version, version = _c === void 0 ? 'nextgen' : _c, nonce = _a.nonce;
         w.smartlook.api = [];
         w.smartlook('init', key, { region: region });
         var head = window.document.getElementsByTagName('head')[0];
         var script = window.document.createElement('script');
+        if (typeof nonce === 'string') {
+            script.setAttribute('nonce', nonce);
+        }
         script.async = true;
         script.type = 'text/javascript';
         script.crossOrigin = 'anonymous';

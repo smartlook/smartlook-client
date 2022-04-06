@@ -2,6 +2,7 @@ declare const _default: {
     init: (key: string, params?: {
         region?: "eu" | "us" | undefined;
         version?: "nextgen" | "legacy" | undefined;
+        nonce?: string | undefined;
     } | undefined) => boolean;
     identify: (userId: string | number, props: {
         [key: string]: string | number | boolean;

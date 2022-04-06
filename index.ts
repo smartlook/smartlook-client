@@ -8,7 +8,7 @@ export default {
 	 * @param key Project key from project settings
 	 * @param params Not required parameters, default region is 'eu' and default version is 'nextgen'
 	 */
-	init: function (key: string, params?: { region?: 'eu' | 'us'; version?: 'nextgen' | 'legacy' }): boolean {
+	init: function (key: string, params?: { region?: 'eu' | 'us'; version?: 'nextgen' | 'legacy', nonce?: string }): boolean {
 		const w = window as SmartlookWindow
 		if (w.smartlook) {
 			console.warn('Smartlook client is already initialized.')
@@ -18,13 +18,18 @@ export default {
 			w.smartlook.api.push(arguments)
 		}
 
-		const { region = 'eu', version = 'nextgen' } = params ?? {}
+		const { region = 'eu', version = 'nextgen', nonce } = params ?? {}
 
 		w.smartlook.api = []
 		w.smartlook('init', key, { region })
 
 		const head = window.document.getElementsByTagName('head')[0]
 		const script = window.document.createElement('script')
+
+		if(typeof nonce === 'string') {
+				script.setAttribute('nonce', nonce)
+		}
+
 		script.async = true
 		script.type = 'text/javascript'
 		script.crossOrigin = 'anonymous'
