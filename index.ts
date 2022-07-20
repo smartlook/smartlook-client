@@ -1,4 +1,9 @@
-type SmartlookWindow = Window & { smartlook?: any }
+declare global {
+	interface Window {
+    smartlook: any;
+  }
+}
+
 const SL_NOT_INITIALIZED = 'Smartlook client is not initialized.'
 
 export default {
@@ -9,7 +14,7 @@ export default {
 	 * @param params Not required parameters, default region is 'eu' and default version is 'nextgen'
 	 */
 	init: function (key: string, params?: { region?: 'eu' | 'us'; version?: 'nextgen' | 'legacy' }): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (w.smartlook) {
 			console.warn('Smartlook client is already initialized.')
 			return false
@@ -35,7 +40,7 @@ export default {
 		return true
 	},
 	identify: function (userId: string | number, props: { [key: string]: string | boolean | number }): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -48,7 +53,7 @@ export default {
 		return true
 	},
 	anonymize: function (): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -57,7 +62,7 @@ export default {
 		return true
 	},
 	track: function (eventName: string, props: { [key: string]: string | boolean | number }): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -66,7 +71,7 @@ export default {
 		return true
 	},
 	disable: function (): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -81,7 +86,7 @@ export default {
 		emails?: boolean
 		api?: boolean
 	}): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -90,7 +95,7 @@ export default {
 		return true
 	},
 	getData: function (callback: () => void): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -99,7 +104,7 @@ export default {
 		return true
 	},
 	restart: function (): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -108,7 +113,7 @@ export default {
 		return true
 	},
 	pause: function (): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -117,7 +122,7 @@ export default {
 		return true
 	},
 	resume: function (): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -126,7 +131,7 @@ export default {
 		return true
 	},
 	error: function (error: string | Error): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -135,7 +140,7 @@ export default {
 		return true
 	},
 	navigation: function (locationOrPath: string): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -144,7 +149,7 @@ export default {
 		return true
 	},
 	properties: function (properties: { [key: string]: string | boolean | number }): boolean {
-		const w = window as SmartlookWindow
+		const w = window
 		if (!w.smartlook) {
 			console.warn(SL_NOT_INITIALIZED)
 			return false
@@ -153,31 +158,24 @@ export default {
 		return true
 	},
 	initialized: function (): boolean {
-		const w = window as SmartlookWindow
-		return !!w.smartlook
+		return !!window.smartlook
 	},
 	get playUrl(): string | undefined {
-		const w = window as SmartlookWindow
-		return w.smartlook.playUrl
+		return window.smartlook.playUrl
 	},
 	get sessionId(): string | undefined {
-		const w = window as SmartlookWindow
-		return w.smartlook.sessionId
+		return window.smartlook.sessionId
 	},
 	get visitorId(): string | undefined {
-		const w = window as SmartlookWindow
-		return w.smartlook.visitorId
+		return window.smartlook.visitorId
 	},
 	get recordId(): string | undefined {
-		const w = window as SmartlookWindow
-		return w.smartlook.recordId
+		return window.smartlook.recordId
 	},
 	get key(): string | undefined {
-		const w = window as SmartlookWindow
-		return w.smartlook.key
+		return window.smartlook.key
 	},
 	get version(): string | undefined {
-		const w = window as SmartlookWindow
-		return w.smartlook.version
+		return window.smartlook.version
 	},
 }
