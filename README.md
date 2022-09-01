@@ -22,7 +22,7 @@ Imports and initializes Smartlook recorder into a page.
 
     ```
     init(string key)
-    init(string key, params?: { region?: 'eu' | 'us', version?: 'legacy' | 'nextgen' })
+    init(string key, params?: { region?: 'eu' | 'us', version?: 'legacy' | 'nextgen', cookies?: boolean })
     ```
 
     ```
