@@ -11,7 +11,7 @@ export default {
 	 */
 	init: function (
 		key: string,
-		params?: { region?: 'eu' | 'us'; version?: 'nextgen' | 'legacy'; cookies?: boolean; proxyUrl: string },
+		params?: { region?: 'eu' | 'us'; version?: 'nextgen' | 'legacy'; cookies?: boolean; proxyUrl?: string },
 	): boolean {
 		const w = window as SmartlookWindow
 		if (w.smartlook) {

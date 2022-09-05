@@ -3,7 +3,7 @@ declare const _default: {
         region?: "eu" | "us" | undefined;
         version?: "nextgen" | "legacy" | undefined;
         cookies?: boolean | undefined;
-        proxyUrl: string;
+        proxyUrl?: string | undefined;
     } | undefined) => boolean;
     identify: (userId: string | number, props: {
         [key: string]: string | number | boolean;
