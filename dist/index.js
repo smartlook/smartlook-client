@@ -11,7 +11,7 @@ exports.default = {
         w.smartlook = function () {
             w.smartlook.api.push(arguments);
         };
-        var _a = params !== null && params !== void 0 ? params : {}, _b = _a.region, region = _b === void 0 ? 'eu' : _b, _c = _a.version, version = _c === void 0 ? 'nextgen' : _c, _d = _a.cookies, cookies = _d === void 0 ? true : _d;
+        var _a = params !== null && params !== void 0 ? params : {}, _b = _a.region, region = _b === void 0 ? 'eu' : _b, _c = _a.version, version = _c === void 0 ? 'nextgen' : _c, _d = _a.cookies, cookies = _d === void 0 ? true : _d, _e = _a.proxyUrl, proxyUrl = _e === void 0 ? '' : _e;
         w.smartlook.api = [];
         w.smartlook('init', key, { region: region, cookies: cookies });
         var head = window.document.getElementsByTagName('head')[0];
@@ -20,7 +20,9 @@ exports.default = {
         script.type = 'text/javascript';
         script.crossOrigin = 'anonymous';
         script.src =
-            version === 'nextgen' ? 'https://web-sdk.smartlook.com/recorder.js' : 'https://rec.smartlook.com/recorder.js';
+            version === 'nextgen'
+                ? 'https://web-sdk.smartlook.com/recorder.js'
+                : proxyUrl || 'https://rec.smartlook.com/recorder.js';
         head.appendChild(script);
         return true;
     },
