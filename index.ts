@@ -9,7 +9,10 @@ export default {
 	 * @param params Not required parameters, default region is 'eu', default version is 'nextgen'
 	 *  and storing metadata in cookies is enabled by default
 	 */
-	init: function (key: string, params?: { region?: 'eu' | 'us'; version?: 'nextgen' | 'legacy', cookies?: boolean }): boolean {
+	init: function (
+		key: string,
+		params?: { region?: 'eu' | 'us'; version?: 'nextgen' | 'legacy'; cookies?: boolean; host?: string },
+	): boolean {
 		const w = window as SmartlookWindow
 		if (w.smartlook) {
 			console.warn('Smartlook client is already initialized.')
@@ -19,18 +22,21 @@ export default {
 			w.smartlook.api.push(arguments)
 		}
 
-		const { region = 'eu', version = 'nextgen', cookies = true } = params ?? {}
+		const { region = 'eu', version = 'nextgen', cookies = true, host } = params ?? {}
 
 		w.smartlook.api = []
-		w.smartlook('init', key, { region, cookies })
+		w.smartlook('init', key, { region, cookies, host })
 
 		const head = window.document.getElementsByTagName('head')[0]
 		const script = window.document.createElement('script')
+		const src =
+			version === 'nextgen'
+				? host ?? 'https://web-sdk.smartlook.com/recorder.js'
+				: 'https://rec.smartlook.com/recorder.js'
 		script.async = true
 		script.type = 'text/javascript'
 		script.crossOrigin = 'anonymous'
-		script.src =
-			version === 'nextgen' ? 'https://web-sdk.smartlook.com/recorder.js' : 'https://rec.smartlook.com/recorder.js'
+		script.src = src
 		head.appendChild(script)
 
 		return true
