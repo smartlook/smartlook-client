@@ -11,16 +11,28 @@ exports.default = {
         w.smartlook = function () {
             w.smartlook.api.push(arguments);
         };
-        var _a = params !== null && params !== void 0 ? params : {}, _b = _a.region, region = _b === void 0 ? 'eu' : _b, _c = _a.version, version = _c === void 0 ? 'nextgen' : _c, _d = _a.cookies, cookies = _d === void 0 ? true : _d;
+        var _a = params !== null && params !== void 0 ? params : {}, _b = _a.region, region = _b === void 0 ? 'eu' : _b, _c = _a.cookies, cookies = _c === void 0 ? true : _c, relayProxyUrl = _a.relayProxyUrl;
         w.smartlook.api = [];
-        w.smartlook('init', key, { region: region, cookies: cookies });
+        var initParams = { region: region, cookies: cookies };
+        var src = 'https://web-sdk.smartlook.com/recorder.js';
+        if (relayProxyUrl) {
+            try {
+                var relayProxy = new URL(relayProxyUrl);
+                src = new URL("/recorder.js", relayProxy.origin).toString();
+                initParams.host = relayProxy.host;
+            }
+            catch (e) {
+                console.error('Smartlook init param `relayProxyUrl` is not valid. Please provide full url like `https://my-proxy-domain.com/`.');
+                return false;
+            }
+        }
+        w.smartlook('init', key, initParams);
         var head = window.document.getElementsByTagName('head')[0];
         var script = window.document.createElement('script');
         script.async = true;
         script.type = 'text/javascript';
         script.crossOrigin = 'anonymous';
-        script.src =
-            version === 'nextgen' ? 'https://web-sdk.smartlook.com/recorder.js' : 'https://rec.smartlook.com/recorder.js';
+        script.src = src;
         head.appendChild(script);
         return true;
     },

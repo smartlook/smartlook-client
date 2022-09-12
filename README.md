@@ -22,8 +22,42 @@ Imports and initializes Smartlook recorder into a page.
 
     ```
     init(string key)
-    init(string key, params?: { region?: 'eu' | 'us', version?: 'legacy' | 'nextgen', cookies?: boolean })
+    init(string key, params?: { region?: 'eu' | 'us', cookies?: boolean, relayProxyUrl?: string })
     ```
+	Required parameters:
+	* key:
+		* Obtained in application at project settings
+
+	Optional parameters:
+
+	* region:
+		* supported values:
+			* `'eu'`
+			* `'us'`
+		* example:
+			* `smartlookClient.init('xxxxx', { region: 'us' })`
+		* description
+			* Region where data will be captured and stored
+			* **Do not change** unless told by your sales manager
+	* cookies:
+		* supported values:
+			* `true`
+			* `false`
+		* example:
+			* `smartlookClient.init('xxxxx', { cookies: false })`
+		* description
+			* Use false if you do not want to store recording metadata in cookies
+			* Note that disabling cookies with block the ability to connect visitors between domain and its subdomains.
+	* relayProxyUrl:
+		* supported values:
+			* full URL of self-hosted relay proxy
+				* e.g. `'https://my-proxy-domain.com/'`
+		* example
+			* `smartlookClient.init('xxxxx', { relayProxyUrl: 'https://my-proxy-domain.com/' })`
+		* description:
+			* Read more about relay proxy at https://help.smartlook.com/en/articles/6120645-smartlook-relay-proxy and https://github.com/smartlook/smartlook-relay-proxy
+
+	---
 
     ```
     track(string eventName, object<key:value> props)
@@ -145,4 +179,4 @@ Imports and initializes Smartlook recorder into a page.
     export default App
     ```
 
-For more info visit https://www.smartlook.com/docs/api.html
+For more info visit https://web.developer.smartlook.com/reference/getting-started-with-your-api
