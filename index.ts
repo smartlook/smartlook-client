@@ -6,10 +6,12 @@ export default {
 	 * Initializes the Smartlook web sdk library
 	 *
 	 * @param key Project key from project settings
-	 * @param params Not required parameters, default region is 'eu', default version is 'nextgen'
-	 *  and storing metadata in cookies is enabled by default
+	 * @param params Not required parameters
+	 *	default region is 'eu'
+	 *	metadata in cookies is enabled by default
+	 *	relayProxyUrl is used together with https://help.smartlook.com/en/articles/6120645-smartlook-relay-proxy and should be full url with protocol e.g. https://my-proxy-domain.com/
 	 */
-	init: function (key: string, params?: { region?: 'eu' | 'us'; version?: 'nextgen' | 'legacy', cookies?: boolean }): boolean {
+	init: function (key: string, params?: { region?: 'eu' | 'us'; cookies?: boolean; relayProxyUrl?: string }): boolean {
 		const w = window as SmartlookWindow
 		if (w.smartlook) {
 			console.warn('Smartlook client is already initialized.')
@@ -19,18 +21,32 @@ export default {
 			w.smartlook.api.push(arguments)
 		}
 
-		const { region = 'eu', version = 'nextgen', cookies = true } = params ?? {}
+		const { region = 'eu', cookies = true, relayProxyUrl } = params ?? {}
 
 		w.smartlook.api = []
-		w.smartlook('init', key, { region, cookies })
+
+		const initParams: { region?: string, cookies?: boolean, host?: string } = { region, cookies }
+		let src = 'https://web-sdk.smartlook.com/recorder.js'
+
+		if (relayProxyUrl) {
+			try {
+				const constructedUrl = new URL('/recorder.js', relayProxyUrl)
+				initParams.host = constructedUrl.host
+				src = constructedUrl.toString()
+			} catch (e) {
+				console.error('Smartlook init param `relayProxyUrl` is not valid. Please provide full url like `https://my-proxy-domain.com/`.')
+				return false
+			}
+		}
+
+		w.smartlook('init', key, initParams)
 
 		const head = window.document.getElementsByTagName('head')[0]
 		const script = window.document.createElement('script')
 		script.async = true
 		script.type = 'text/javascript'
 		script.crossOrigin = 'anonymous'
-		script.src =
-			version === 'nextgen' ? 'https://web-sdk.smartlook.com/recorder.js' : 'https://rec.smartlook.com/recorder.js'
+		script.src = src
 		head.appendChild(script)
 
 		return true
