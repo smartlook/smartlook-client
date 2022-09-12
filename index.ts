@@ -30,9 +30,9 @@ export default {
 
 		if (relayProxyUrl) {
 			try {
-				const relayProxy = new URL(relayProxyUrl)
-				src = new URL(`/recorder.js`, relayProxy.origin).toString()
-				initParams.host = relayProxy.host
+				const constructedUrl = new URL('/recorder.js', relayProxyUrl)
+				initParams.host = constructedUrl.host
+				src = constructedUrl.toString()
 			} catch (e) {
 				console.error('Smartlook init param `relayProxyUrl` is not valid. Please provide full url like `https://my-proxy-domain.com/`.')
 				return false

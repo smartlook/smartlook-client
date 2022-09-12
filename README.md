@@ -48,6 +48,7 @@ Imports and initializes Smartlook recorder into a page.
 		* description
 			* Use false if you do not want to store recording metadata in cookies
 			* Note that disabling cookies with block the ability to connect visitors between domain and its subdomains.
+			* Read more at https://help.smartlook.com/en/articles/6064963-cookies-in-smartlook
 	* relayProxyUrl:
 		* supported values:
 			* full URL of self-hosted relay proxy
