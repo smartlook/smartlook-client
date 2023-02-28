@@ -11,13 +11,12 @@ exports.default = {
         w.smartlook = function () {
             w.smartlook.api.push(arguments);
         };
-        var _a = params !== null && params !== void 0 ? params : {}, _b = _a.region, region = _b === void 0 ? 'eu' : _b, _c = _a.cookies, cookies = _c === void 0 ? true : _c, relayProxyUrl = _a.relayProxyUrl;
         w.smartlook.api = [];
-        var initParams = { region: region, cookies: cookies };
+        var initParams = params;
         var src = 'https://web-sdk.smartlook.com/recorder.js';
-        if (relayProxyUrl) {
+        if (initParams === null || initParams === void 0 ? void 0 : initParams.relayProxyUrl) {
             try {
-                var constructedUrl = new URL('/recorder.js', relayProxyUrl);
+                var constructedUrl = new URL('/recorder.js', initParams.relayProxyUrl);
                 initParams.host = constructedUrl.host;
                 src = constructedUrl.toString();
             }

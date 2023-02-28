@@ -1,9 +1,33 @@
+interface Network {
+    allowedHeaders?: string[];
+    allowedUrls?: (string | RegExp)[];
+}
+declare type RequestOrResponse = {
+    body?: string;
+    headers?: Record<string, string[]>;
+};
+interface Interceptors {
+    network?: (data: {
+        request?: RequestOrResponse;
+        response?: RequestOrResponse;
+        url: string;
+    }, context: {
+        pageUrl: string;
+    }) => void | false;
+    url?: (data: {
+        url: string;
+    }) => void;
+}
+export declare type InitParams = {
+    advancedNetwork?: Network | boolean;
+    interceptors?: Interceptors;
+    cookies?: boolean;
+    region?: 'eu' | 'us';
+    relayProxyUrl?: string;
+    standalone?: boolean;
+};
 declare const _default: {
-    init: (key: string, params?: {
-        region?: "eu" | "us" | undefined;
-        cookies?: boolean | undefined;
-        relayProxyUrl?: string | undefined;
-    } | undefined) => boolean;
+    init: (key: string, params?: InitParams | undefined) => boolean;
     identify: (userId: string | number, props: {
         [key: string]: string | number | boolean;
     }) => boolean;
