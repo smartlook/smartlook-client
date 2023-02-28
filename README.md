@@ -12,51 +12,73 @@ Imports and initializes Smartlook recorder into a page.
     ```
 2.  Import
     ```
-    import smartlookClient from 'smartlook-client'
+    import Smartlook from 'smartlook-client'
     ```
     or
     ```
-    var smartlookClient = require('smartlook-client')
+    const Smartlook = require('smartlook-client')
     ```
 3.  API
 
     ```
-    init(string key)
-    init(string key, params?: { region?: 'eu' | 'us', cookies?: boolean, relayProxyUrl?: string })
+    init(key: string)
+    init(key: string, params)
     ```
 	Required parameters:
 	* key:
 		* Obtained in application at project settings
 
 	Optional parameters:
-
+    * advancedNetwork:
+        * description:
+            * Object with settings that control network data capture. Advanced network recording allows recording the bodies and headers of requests and responses.
+            * Read more at https://web.developer.smartlook.com/docs/advanced-network-recording
+        * `allowedUrls`
+            * allows recording of request/response bodies
+            * an Array of exact, string patterns or regular expressions
+        * `allowedHeaders`
+            * allows recording of non-standard headers
+            * an Array of exact, case-insensitive patterns
+    * cookies:
+		* supported values:
+			* _(default)_ `true` - enable storing of metadata in cookies and local storage
+			* `false` - disable storing of metadata in cookies, using only local storage
+		* example:
+			* `Smartlook.init('xxxxx', { cookies: false })`
+		* description
+			* Use false if you do not want to store recording metadata in cookies
+			* Note that disabling cookies with block the ability to connect visitors between domain and subdomains.
+			* Read more at https://help.smartlook.com/en/articles/6064963-cookies-in-smartlook
+    * interceptors
+        * description:
+            * Object with settings that allows control the data that Smartlook captures.
+            * Read more at https://web.developer.smartlook.com/docs/interceptors
+        * `url`
+            * URL interceptor that can obscure sensitive data from URLs
+        * `network`
+            * Network interceptor that can obscure sensitive data from recorded network calls—bodies, headers, and URLs.
+            * Network events can be completely omitted by returning false from the interceptor.
 	* region:
 		* supported values:
 			* `'eu'`
 			* `'us'`
 		* example:
-			* `smartlookClient.init('xxxxx', { region: 'us' })`
+			* `Smartlook.init('xxxxx', { region: 'us' })`
 		* description
 			* Region where data will be captured and stored
 			* **Do not change** unless told by your sales manager
-	* cookies:
-		* supported values:
-			* `true`
-			* `false`
-		* example:
-			* `smartlookClient.init('xxxxx', { cookies: false })`
-		* description
-			* Use false if you do not want to store recording metadata in cookies
-			* Note that disabling cookies with block the ability to connect visitors between domain and its subdomains.
-			* Read more at https://help.smartlook.com/en/articles/6064963-cookies-in-smartlook
 	* relayProxyUrl:
 		* supported values:
 			* full URL of self-hosted relay proxy
 				* e.g. `'https://my-proxy-domain.com/'`
 		* example
-			* `smartlookClient.init('xxxxx', { relayProxyUrl: 'https://my-proxy-domain.com/' })`
+			* `Smartlook.init('xxxxx', { relayProxyUrl: 'https://my-proxy-domain.com/' })`
 		* description:
-			* Read more about relay proxy at https://help.smartlook.com/en/articles/6120645-smartlook-relay-proxy and https://github.com/smartlook/smartlook-relay-proxy
+			* Read more at https://help.smartlook.com/en/articles/6120645-smartlook-relay-proxy and https://github.com/smartlook/smartlook-relay-proxy
+	* standalone:
+		* supported values:
+            * _(default)_ `false` - makes Smartlook try to establish a connection with the parent window and join the session. The session will be reused only when the parent window loads Smartlook and records it as the same project. See more in the iframe recordings section. if the communication is not established within 10 seconds, the recording starts as a standalone anyway, but these first 10 seconds may be missing.
+            * `true` - enable when your application is loaded in an iframe and you do not want Smartlook to try to connect with the parent window. Enabling this might be useful especially when you develop a third-party integration (e.g. payment gateway) that is inserted as an iframe on multiple websites.
 
 	---
 
@@ -142,18 +164,18 @@ Imports and initializes Smartlook recorder into a page.
 
     ```js
     import React, { Component } from 'react'
-    import smartlookClient from 'smartlook-client'
+    import Smartlook from 'smartlook-client'
 
     class App extends Component {
     	handleIdentify = () => {
-    		smartlookClient.identify(12345, {
+    		Smartlook.identify(12345, {
     			name: 'John Doe',
     			email: 'email@domain.com',
     			// other custom properties
     		})
     	}
     	handleTrack = () => {
-    		smartlookClient.track('transaction', {
+    		Smartlook.track('transaction', {
     			value: 150,
     			currency: 'usd',
     			product: 'Product Description',
@@ -161,7 +183,7 @@ Imports and initializes Smartlook recorder into a page.
     		})
     	}
     	handlePause = () => {
-    		smartlookClient.pause()
+    		Smartlook.pause()
     	}
     	render() {
     		return (
@@ -173,7 +195,7 @@ Imports and initializes Smartlook recorder into a page.
     		)
     	}
     	componentDidMount() {
-    		smartlookClient.init('43bc84d9a8406exxxxxxxxxb5601f5bbf8d2ed')
+    		Smartlook.init('43bc84d9a8406exxxxxxxxxb5601f5bbf8d2ed')
     	}
     }
 

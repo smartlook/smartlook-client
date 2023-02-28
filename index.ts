@@ -1,17 +1,55 @@
 type SmartlookWindow = Window & { smartlook?: any }
 const SL_NOT_INITIALIZED = 'Smartlook client is not initialized.'
 
+interface Network {
+	allowedHeaders?: string[]
+	allowedUrls?: (string | RegExp)[]
+}
+
+type RequestOrResponse = {
+	body?: string
+	headers?: Record<string, string[]>
+}
+
+interface Interceptors {
+	network?: (
+		data: {
+			request?: RequestOrResponse
+			response?: RequestOrResponse
+			url: string
+		},
+		context: { pageUrl: string },
+	) => void | false
+	url?: (data: { url: string }) => void
+}
+
+export type InitParams = {
+	// Advanced network recording allows recording the bodies and headers of requests and responses.
+	advancedNetwork?: Network | boolean
+	// Interceptors are used to control what data Smartlook captures, and what data sensitive data Smartlook omits.
+	interceptors?: Interceptors
+	// metadata in cookies is enabled by default
+	cookies?: boolean;
+	// default region is 'eu'
+	region?: 'eu' | 'us';
+	// relayProxyUrl is used together with https://help.smartlook.com/en/articles/6120645-smartlook-relay-proxy and should be full url with protocol e.g. https://my-proxy-domain.com/
+	relayProxyUrl?: string;
+	// (default) false - makes Smartlook try to establish a connection with the parent window and join the session. The session will be reused only when the parent window loads Smartlook and records it as the same project.
+	// See more in the iframe recordings section. if the communication is not established within 10 seconds, the recording starts as a standalone anyway, but these first 10 seconds may be missing.
+	// true - enable when your application is loaded in an iframe and you do not want Smartlook to try to connect with the parent window. 
+	// Enabling this might be useful especially when you develop a third-party integration (e.g. payment gateway) that is inserted as an iframe on multiple websites.
+	standalone?: boolean
+};
+
 export default {
 	/**
 	 * Initializes the Smartlook web sdk library
+	 * Read more at https://web.developer.smartlook.com/reference/smartlookinit
 	 *
 	 * @param key Project key from project settings
-	 * @param params Not required parameters
-	 *	default region is 'eu'
-	 *	metadata in cookies is enabled by default
-	 *	relayProxyUrl is used together with https://help.smartlook.com/en/articles/6120645-smartlook-relay-proxy and should be full url with protocol e.g. https://my-proxy-domain.com/
+	 * @param params Optional parameters
 	 */
-	init: function (key: string, params?: { region?: 'eu' | 'us'; cookies?: boolean; relayProxyUrl?: string }): boolean {
+	init: function (key: string, params?: InitParams): boolean {
 		const w = window as SmartlookWindow
 		if (w.smartlook) {
 			console.warn('Smartlook client is already initialized.')
@@ -21,16 +59,14 @@ export default {
 			w.smartlook.api.push(arguments)
 		}
 
-		const { region = 'eu', cookies = true, relayProxyUrl } = params ?? {}
-
 		w.smartlook.api = []
 
-		const initParams: { region?: string, cookies?: boolean, host?: string } = { region, cookies }
+		const initParams: undefined | InitParams & { host?: string } = params
 		let src = 'https://web-sdk.smartlook.com/recorder.js'
 
-		if (relayProxyUrl) {
+		if (initParams?.relayProxyUrl) {
 			try {
-				const constructedUrl = new URL('/recorder.js', relayProxyUrl)
+				const constructedUrl = new URL('/recorder.js', initParams.relayProxyUrl)
 				initParams.host = constructedUrl.host
 				src = constructedUrl.toString()
 			} catch (e) {
