@@ -7,6 +7,14 @@ declare type RequestOrResponse = {
     headers?: Record<string, string[]>;
 };
 interface Interceptors {
+    error?: (data: {
+        colno?: number;
+        filename?: string;
+        lineno?: number;
+        message?: string;
+        stack?: string;
+        url: string;
+    }, context: ErrorEvent | PromiseRejectionEvent | Error | string) => void | boolean;
     network?: (data: {
         request?: RequestOrResponse;
         response?: RequestOrResponse;
