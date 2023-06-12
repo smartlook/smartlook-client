@@ -12,6 +12,14 @@ type RequestOrResponse = {
 }
 
 interface Interceptors {
+  click?: {
+      data: {
+        props?: Record<string, string | number | null | boolean>
+        text?: string
+        url: string
+      },
+      context: MouseEvent,
+  },
   error?: (
 		data: {
 			colno?: number
