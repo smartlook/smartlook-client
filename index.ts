@@ -12,6 +12,17 @@ type RequestOrResponse = {
 }
 
 interface Interceptors {
+  error?: (
+		data: {
+			colno?: number
+			filename?: string
+			lineno?: number
+			message?: string
+			stack?: string
+			url: string
+		},
+		context: ErrorEvent | PromiseRejectionEvent | Error | string,
+	) => void | boolean
 	network?: (
 		data: {
 			request?: RequestOrResponse
@@ -36,7 +47,7 @@ export type InitParams = {
 	relayProxyUrl?: string;
 	// (default) false - makes Smartlook try to establish a connection with the parent window and join the session. The session will be reused only when the parent window loads Smartlook and records it as the same project.
 	// See more in the iframe recordings section. if the communication is not established within 10 seconds, the recording starts as a standalone anyway, but these first 10 seconds may be missing.
-	// true - enable when your application is loaded in an iframe and you do not want Smartlook to try to connect with the parent window. 
+	// true - enable when your application is loaded in an iframe and you do not want Smartlook to try to connect with the parent window.
 	// Enabling this might be useful especially when you develop a third-party integration (e.g. payment gateway) that is inserted as an iframe on multiple websites.
 	standalone?: boolean
 };
