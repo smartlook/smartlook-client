@@ -7,14 +7,11 @@ declare type RequestOrResponse = {
     headers?: Record<string, string[]>;
 };
 interface Interceptors {
-    click?: {
-        data: {
-            props?: Record<string, string | number | null | boolean>;
-            text?: string;
-            url: string;
-        };
-        context: MouseEvent;
-    };
+    click?: (data: {
+        props?: Record<string, string | number | null | boolean>;
+        text?: string;
+        url: string;
+    }, context: MouseEvent) => void | boolean;
     error?: (data: {
         colno?: number;
         filename?: string;
@@ -23,6 +20,9 @@ interface Interceptors {
         stack?: string;
         url: string;
     }, context: ErrorEvent | PromiseRejectionEvent | Error | string) => void | boolean;
+    focus?: (data: {
+        url: string;
+    }, context: FocusEvent) => void | boolean;
     network?: (data: {
         request?: RequestOrResponse;
         response?: RequestOrResponse;
