@@ -40,6 +40,14 @@ interface Interceptors {
       context: FocusEvent,
   ) => void | boolean,
 
+  input?: (
+		data: {
+			url: string
+			value: string
+		},
+		context: Event,
+	) => void | boolean
+
 	network?: (
 		data: {
 			request?: RequestOrResponse
