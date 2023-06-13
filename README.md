@@ -58,6 +58,15 @@ Imports and initializes Smartlook recorder into a page.
         * `network`
             * Network interceptor that can obscure sensitive data from recorded network calls—bodies, headers, and URLs.
             * Network events can be completely omitted by returning false from the interceptor.
+        * `error`
+            * 	Error interceptor that can obscure sensitive data from error events
+        * `focus`
+            * 	Focus interceptor that can obscure sensitive data from focus events
+        * `input`
+            * 	Input interceptor that can obscure sensitive data from input events
+        * `click`
+            * 	Click interceptor that can obscure sensitive data from click events
+            
 	* region:
 		* supported values:
 			* `'eu'`
