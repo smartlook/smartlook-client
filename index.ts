@@ -4,6 +4,7 @@ const SL_NOT_INITIALIZED = 'Smartlook client is not initialized.'
 interface Network {
 	allowedHeaders?: string[]
 	allowedUrls?: (string | RegExp)[]
+	websockets?: boolean
 }
 
 type RequestOrResponse = {
