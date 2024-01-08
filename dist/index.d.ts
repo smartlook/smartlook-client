@@ -1,6 +1,7 @@
 interface Network {
     allowedHeaders?: string[];
     allowedUrls?: (string | RegExp)[];
+    websockets?: boolean;
 }
 declare type RequestOrResponse = {
     body?: string;

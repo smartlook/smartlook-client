@@ -39,6 +39,9 @@ Imports and initializes Smartlook recorder into a page.
         * `allowedHeaders`
             * allows recording of non-standard headers
             * an Array of exact, case-insensitive patterns
+        * `websockets`
+            * allows recording of websockets
+            * boolean value
     * cookies:
 		* supported values:
 			* _(default)_ `true` - enable storing of metadata in cookies and local storage
