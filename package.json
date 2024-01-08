@@ -1,6 +1,6 @@
 {
 	"name": "smartlook-client",
-	"version": "8.2.0",
+	"version": "8.3.0",
 	"description": "Official Smartlook client for easy frontend integration.",
 	"main": "./dist/index.js",
 	"types": "./dist/index.d.ts",
