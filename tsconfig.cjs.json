@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"sourceMap": true,
+		"target": "es5",
+		"module": "commonjs",
+		"allowJs": false,
+		"declaration": false,
+		"removeComments": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"strict": true,
+		"outDir": "dist/cjs",
+	},
+	"files": ["index.ts"]
+}
