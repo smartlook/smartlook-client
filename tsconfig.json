@@ -1,14 +1,15 @@
 {
-	"compilerOptions": {
-		"sourceMap": true,
-		"target": "es5",
-		"allowJs": false,
-		"declaration": true,
-		"removeComments": true,
-		"noImplicitReturns": true,
-		"noUnusedLocals": true,
-		"strict": true,
-		"outDir": "dist",
-	},
-	"files": ["index.ts"]
+  "compilerOptions": {
+    "sourceMap": true,
+    "module": "esnext",
+    "target": "es6",
+    "allowJs": false,
+    "declaration": true,
+    "removeComments": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "strict": true,
+    "outDir": "dist/esm"
+  },
+  "files": ["index.ts"]
 }
