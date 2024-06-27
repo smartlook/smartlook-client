@@ -98,13 +98,13 @@ export default {
 
 		w.smartlook.api = []
 
-		const initParams: undefined | InitParams & { host?: string } = params
+		const initParams: undefined | InitParams & { origin?: string } = params
 		let src = 'https://web-sdk.smartlook.com/recorder.js'
 
 		if (initParams?.relayProxyUrl) {
 			try {
 				const constructedUrl = new URL('/recorder.js', initParams.relayProxyUrl)
-				initParams.host = constructedUrl.host
+				initParams.origin = constructedUrl.origin;
 				src = constructedUrl.toString()
 			} catch (e) {
 				console.error('Smartlook init param `relayProxyUrl` is not valid. Please provide full url like `https://my-proxy-domain.com/`.')
