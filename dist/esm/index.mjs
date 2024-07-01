@@ -15,7 +15,7 @@ export default {
         if (initParams === null || initParams === void 0 ? void 0 : initParams.relayProxyUrl) {
             try {
                 const constructedUrl = new URL('/recorder.js', initParams.relayProxyUrl);
-                initParams.host = constructedUrl.host;
+                initParams.host = constructedUrl.origin;
                 src = constructedUrl.toString();
             }
             catch (e) {

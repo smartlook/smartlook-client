@@ -1,6 +1,6 @@
 {
 	"name": "smartlook-client",
-	"version": "9.0.0",
+	"version": "10.0.0",
 	"description": "Official Smartlook client for easy frontend integration.",
 	"main": "./dist/esm/index.mjs",
 	"types": "./dist/esm/index.d.ts",
